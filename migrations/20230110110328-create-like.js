@@ -2,25 +2,21 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Posts', {
+    await queryInterface.createTable('Likes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING
-      },
-      content: {
-        type: Sequelize.TEXT
+      postId: {
+        type: Sequelize.INTEGER
       },
       userId: {
         type: Sequelize.INTEGER
       },
-      like: {
-        type: Sequelize.INTEGER,
-        defaultValue : 0
+      done: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -33,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Posts');
+    await queryInterface.dropTable('Likes');
   }
 };

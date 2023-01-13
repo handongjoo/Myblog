@@ -1,0 +1,23 @@
+const jwt = require('jsonwebtoken')
+const {User} = require('../models')
+
+module.exports = async (req, res, next) => {
+    const {authorization} = req.headers;
+    const [tokenType, token] = authorization.split(" ");
+
+    if (tokenType !== "Bearer" || !token) {
+        return res.status(401).json({message: "로그인이 필요합니다."})
+    }
+
+    try{
+        const {userId} = jwt.verify(token, "key")
+
+        const user = await User.findOne({where:{id:userId}})
+        
+        res.locals.user = user;
+        next()
+    } catch (error) {
+        res.status(500).json({message: "로그인이 필요합니다."})
+        console.log(error)
+    }
+}

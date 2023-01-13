@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-const commentRouter = require('./routes/comment');
-const loginRouter = require('./routes/login');
-const postRouter = require('./routes/post');
-const signupRouter = require('./routes/signup');
+const commentRouter = require('./routes/comment.routes');
+const loginRouter = require('./routes/login.routes');
+const postRouter = require('./routes/post.routes');
+const signupRouter = require('./routes/signup.routes');
 
-app.use('/', [commentRouter, loginRouter, postRouter,signupRouter]);
 app.use(express.json());
+app.use('/', [commentRouter, loginRouter, postRouter,signupRouter]);
+
 
 app.get('/', (res, req) => {
     res.send("메인페이지")

@@ -1,7 +1,6 @@
 {
   "name": "myblog",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
@@ -29,5 +28,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
+  },
+  "description": ""
 }
